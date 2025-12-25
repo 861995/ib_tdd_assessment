@@ -37,6 +37,8 @@ void main() {
         ),
       ),
     );
+    expect(calculator.add("1000,2"), 1002);
+    expect(calculator.add("1003,2"), 2);
   });
 }
 
@@ -58,7 +60,9 @@ class StringCalculator {
           int parsedNum = int.parse(splitNum);
 
           if (!parsedNum.isNegative) {
-            positiveNum.add(parsedNum);
+            if (parsedNum <= 1000) {
+              positiveNum.add(parsedNum);
+            }
           } else {
             negativeNum.add(parsedNum);
           }
